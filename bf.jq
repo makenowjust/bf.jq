@@ -7,7 +7,10 @@
 # while(cond;
 #  body
 # )
-def while(cond; body): if cond then body|while(cond; body) else . end;
+def while(cond; body): 
+  # inner function for optimization
+  def _while: if cond then body|_while else . end;
+  _while;
 
 # assert Brainf*ck state
 def assert(cond; msg): if cond then . else error(msg) end;

@@ -21,9 +21,11 @@ $ jq -s -R -M -r -f bf.jq
 ## example
 
 ```console
-# printing `A'
-$ echo '++++[>+<++++]>++.' | jq -s -R -M -r -f bf.jq
+$ cat bf/a.bf
+++++[>+<++++]>++.
+$ jq -s -R -M -r -f bf.jq < bf/a.bf
 A
+$ jq -s -R -M -r -f bf.jq < bf/quine.bf | diff bf/quine.bf - # Warning! It is tooooo slowly and heavy process.
 ```
 
 ## license

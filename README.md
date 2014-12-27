@@ -6,11 +6,11 @@ This is the proof that [jq](http://stedolan.github.io/jq/) is turing-complete!
 ## description
 
 [Brainfuck](http://en.wikipedia.org/wiki/Brainfuck) is an esoteric programming language having only eight commands, which is turing-complete.
-And, jq can write Brainfuck interpreter (), so jq is turing-complete.
+And, jq has a potential to write Brainfuck interpreter, so jq is turing-complete.
 
 ## note
 
-This interpreter don't support `,` command, because jq is not able to get a character from stdin.
+This interpreter dosen't support `,` command, because jq is not able to get a character from stdin.
 
 ## usage
 

@@ -13,8 +13,8 @@ def do(body): if .__cond__ then body else . end;
 def while(body): body|
   if .__cond__ then while(body) else .__cond__=true end;
 
-# error check
-def error(str): if .__cond__ then . else .__error__=str end;
+# assert Brainf*ck state
+def assert(cond; msg): if cond then . else error(msg) end;
 
 # initialize state
 {
@@ -38,7 +38,7 @@ while(
     elif . == 45 then # == '-'
       $current|.mem[.pt]|=(.+255)%256
     elif . == 60 then # == '<'
-      $current|.pt-=1|condition(.pt>=0)|error("error: memory underflow")
+      $current|.pt-=1|assert(.pt>=0; "bf.jq: memory underflow")
     elif . == 62 then # == '>'
       $current|.pt+=1|.mem[.pt]//=0
     elif . == 46 then # == '.'
@@ -62,18 +62,20 @@ while(
             .pc+=1
           )
         )|
-        condition(.count == 0)|error("error: not found `]'")|
+        assert(.count == 0; "bf.jq: not found `]'")|
         .pc-=1
       else
         .st[.stlen]=.pc|.stlen+=1
       end
     elif . == 93 then # == ']'
-      $current|.stlen-=1|.pc=((.st[.stlen]//0)-1)|condition(.stlen>=0)|error("error: not found `['")
+      $current|.stlen-=1|.pc=((.st[.stlen]//0)-1)|assert(.stlen>=0; "bf.jq: not found `['")
     else
       $current
     end|
     .pc+=1
   )
 )|
+# check error
+assert(.stlen == 0; "bf.jq: not found `]'")|
 # print
-if .__error__ then .__error__ else .output|implode end
+.output|implode

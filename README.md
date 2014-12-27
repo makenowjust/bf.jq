@@ -32,4 +32,4 @@ MIT-License. See <http://makenowjust.mit-license.org/2014>.
 
 ## contributing
 
-If you find bug or make it better, please send Pull Request and Issue :laughing:
+If you find bug or make it better, please send [Issue](https://github.com/MakeNowJust/bf.jq/issues) or [Pull Request](https://github.com/MakeNowJust/bf.jq/fork) :laughing:
